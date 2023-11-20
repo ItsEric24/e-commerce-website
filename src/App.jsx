@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import ErrorPage from "./pages/Error/ErrorPage";
-import Signin from "./pages/Signin/Signin";
+import AuthPage from "./pages/AuthPage/AuthPage";
 
 //* The "Layout" function is a layout for all pages so that we can have a persistent navbar on all pages
 const Layout = () => {
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/signin",
-        element: <Signin />,
+        path: "/auth",
+        element: <AuthPage />,
       },
     ],
   },
