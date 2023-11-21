@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ErrorPage from "./pages/Error/ErrorPage";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
+import CheckOutPage from "./pages/CheckoutPage/CheckOutPage";
 
 //* The "Layout" function is a layout for all pages so that we can have a persistent navbar on all pages
 const Layout = () => {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPage />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckOutPage />,
       },
     ],
   },
