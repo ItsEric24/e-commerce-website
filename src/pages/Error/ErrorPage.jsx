@@ -1,11 +1,11 @@
 import { useRouteError } from "react-router-dom";
-import "./error.scss";
+import { ErrorPageContainer } from "./error-page";
 
 function ErrorPage() {
   const error = useRouteError();
   console.log(error);
   return (
-    <div className="error-page">
+    <ErrorPageContainer>
       <div>
         <h1>OOPS!</h1>
         <p style={{ fontWeight: "bold" }}>
@@ -15,7 +15,7 @@ function ErrorPage() {
         </p>
         <p>Sorry, an unexpected error has occured, this page is unavailable</p>
       </div>
-    </div>
+    </ErrorPageContainer>
   );
 }
 export default ErrorPage;

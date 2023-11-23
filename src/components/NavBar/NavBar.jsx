@@ -1,7 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import Logo from "./../../assets/icon.svg";
-import "./Navbar.scss";
+import {
+  NavLinksContainer,
+  NavigationContainer,
+  LogoContainer,
+  NavLink,
+} from "./nav-bar.styles";
 import { UserContext } from "../../context/user.context";
 import { CartContext } from "../../context/cart.context";
 import { signOutUser } from "../../utils/firebase/firebase";
@@ -13,29 +17,25 @@ function NavBar() {
   const { isOpen } = useContext(CartContext);
   return (
     <>
-      <div className="navigation">
-        <Link to="/" className="logo-container">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <div>
             <img src={Logo} alt="logo" />
           </div>
-        </Link>
-        <div className="nav-links-container">
-          <Link to="/shop" className="nav-link">
-            Shop
-          </Link>
+        </LogoContainer>
+        <NavLinksContainer>
+          <NavLink to="/shop">Shop</NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutUser}>
               Sign Out
-            </span>
+            </NavLink>
           ) : (
-            <Link to="/auth" className="nav-link">
-              Signin
-            </Link>
+            <NavLink to="/auth">Signin</NavLink>
           )}
           <CartIcon />
-        </div>
+        </NavLinksContainer>
         {isOpen && <CartDropDown />}
-      </div>
+      </NavigationContainer>
     </>
   );
 }

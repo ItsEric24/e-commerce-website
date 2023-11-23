@@ -1,13 +1,13 @@
 import SignInForm from "../../components/SignInForm/SignInForm.jsx";
 import SignUpForm from "../../components/SignUpForm/SignUpForm.jsx";
-import "./AuthPage.scss";
+import { AuthContainer } from "./auth.styles.jsx";
 
 function AuthPage() {
   return (
-    <div className="authentication-container">
+    <AuthContainer>
       <SignInForm />
       <SignUpForm />
-    </div>
+    </AuthContainer>
   );
 }
 export default AuthPage;

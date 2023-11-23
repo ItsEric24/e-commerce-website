@@ -1,4 +1,6 @@
-.error-page {
+import styled from "styled-components";
+
+export const ErrorPageContainer = styled.div`
   width: 100%;
   text-align: center;
   display: flex;
@@ -10,4 +12,4 @@
   p {
     font-size: 1.3em;
   }
-}
+`;
