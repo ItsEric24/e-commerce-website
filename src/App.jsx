@@ -6,6 +6,13 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import CheckOutPage from "./pages/CheckoutPage/CheckOutPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  createUserDocumentAuth,
+  onAuthStateChangedListener,
+} from "./utils/firebase/firebase.js";
+import { setCurrentUser } from "./store/user/user-reducer.js";
 
 //* The "Layout" function is a layout for all pages so that we can have a persistent navbar on all pages
 const Layout = () => {
@@ -48,6 +55,18 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentAuth(user);
+      }
+      console.log(setCurrentUser(user));
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, []);
   return (
     <>
       <RouterProvider router={router} />

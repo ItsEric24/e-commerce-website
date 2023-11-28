@@ -6,15 +6,15 @@ import {
   ProductCardFooterPrice,
 } from "./product-card";
 import Button, { BUTTON_TYPE_CLASSES } from "../Button/Button";
-import { useContext } from "react";
-import { CartContext } from "../../context/cart.context";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/cart/cart-reducer";
 
 function ProductCard({ product }) {
   const { name, price, imageUrl } = product;
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
 
   const addProductToCart = () => {
-    addToCart(product);
+    dispatch(addItemToCart(product));
   };
   return (
     <ProductCardContainer>

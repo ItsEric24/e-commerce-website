@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Logo from "./../../assets/icon.svg";
 import {
   NavLinksContainer,
@@ -6,15 +5,15 @@ import {
   LogoContainer,
   NavLink,
 } from "./nav-bar.styles";
-import { UserContext } from "../../context/user.context";
-import { CartContext } from "../../context/cart.context";
+import { useSelector } from "react-redux";
 import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropDown from "../CartDropDown/CartDropDown";
+import { selectIsCartOpen } from "../../store/cart/cart-selector";
 
 function NavBar() {
-  const { currentUser } = useContext(UserContext);
-  const { isOpen } = useContext(CartContext);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const isOpen = useSelector(selectIsCartOpen);
   return (
     <>
       <NavigationContainer>

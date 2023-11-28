@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
 import {
+  addItemToCart,
+  clearItemFromCart,
+  removeCartItem,
+} from "../../store/cart/cart-reducer";
+import {
   CheckoutItemContainer,
   Image,
   ImageContainer,
@@ -10,21 +15,19 @@ import {
   QuantityValue,
   RemoveItemButton,
 } from "./check-out-item";
-import { CartContext } from "../../context/cart.context";
-import { useContext } from "react";
+import { useDispatch } from "react-redux";
 
 function CheckoutItem({ checkoutItem }) {
   const { name, imageUrl, price, quantity } = checkoutItem;
-  const { clearItemFromCart, addToCart, removeItemFromCart } =
-    useContext(CartContext);
+  const dispatch = useDispatch();
 
   const clearItemHandler = () => {
-    clearItemFromCart(checkoutItem);
+    dispatch(clearItemFromCart(checkoutItem));
   };
 
-  const addCartItemHandler = () => addToCart(checkoutItem);
+  const addCartItemHandler = () => dispatch(addItemToCart(checkoutItem));
 
-  const removeCartItemHandler = () => removeItemFromCart(checkoutItem);
+  const removeCartItemHandler = () => dispatch(removeCartItem(checkoutItem));
 
   return (
     <CheckoutItemContainer>
